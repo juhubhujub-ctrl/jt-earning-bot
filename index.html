@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TTI Pro Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="user-info">
+            <div class="avatar" id="user-avatar">TA</div>
+            <div class="user-details">
+                <span class="user-name" id="user-name-header">Taher Aziz</span>
+                <span class="user-balance">Balance: SHIB <span id="user-balance-header">1059</span></span>
+            </div>
+        </div>
+        <div class="page-title" id="page-title-text"></div>
+    </header>
+
+    <main class="app-content">
+
+        <div id="home-page" class="page active">
+            <div class="welcome-card gradient-purple">
+                <div class="welcome-text">
+                    <h3>স্বাগতম, <span id="user-name-welcome">Taher Aziz</span>!</h3>
+                    <p>এখনই আয় করা শুরু করুন।</p>
+                    <button class="btn btn-light" onclick="showPage('earn-page')">
+                        <i class="fas fa-play-circle"></i> Earn Now
+                    </button>
+                </div>
+                <img src="https://i.ibb.co/wYyqS3h/work-illustration.png" alt="Working" class="welcome-image">
+            </div>
+
+            <h3 class="section-title">আপনার স্ট্যাটাস</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-coins icon-earn"></i>
+                    <p>Total Earnings</p>
+                    <h4>SHIB <span id="total-earnings-home">1059</span></h4>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-eye icon-ads"></i>
+                    <p>Total Ads Watched</p>
+                    <h4><span id="total-ads-home">38</span></h4>
+                </div>
+            </div>
+        </div>
+
+        <div id="earn-page" class="page">
+            <div class="card">
+                <h3><i class="fas fa-tasks"></i> Today's Ad Tasks</h3>
+                <div class="task-stats">
+                    <p>Total Tasks: <span id="total-tasks">80</span></p>
+                    <p>Completed: <span id="completed-tasks">0</span></p>
+                    <p>Remaining: <span id="remaining-tasks">80</span></p>
+                </div>
+                <div class="progress-bar">
+                    <div id="task-progress-fill" class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <button class="btn btn-primary btn-full" id="start-task-btn">
+                    <i class="fas fa-play"></i> Start Task
+                </button>
+            </div>
+
+            <div class="card">
+                <h3><i class="fab fa-telegram-plane"></i> Daily Tasks</h3>
+                <div class="daily-task-item">
+                    <div class="task-info">
+                        <p>THE UNIQUE INCOME</p>
+                        <span>Reward: SHIB 50.00</span>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-secondary btn-small">Join</button>
+                        <button class="btn btn-success btn-small">Verify</button>
+                    </div>
+                </div>
+                <div class="daily-task-item">
+                    <div class="task-info">
+                        <p>mahmud yt</p>
+                        <span>Reward: SHIB 50.00</span>
+                    </div>
+                    <div class="task-actions">
+                        <button class="btn btn-secondary btn-small">Join</button>
+                        <button class="btn btn-success btn-small">Verify</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="withdraw-page" class="page">
+            <div class="card">
+                <div class="balance-display">
+                    <p>Available Balance</p>
+                    <h2 class="gradient-text">SHIB <span id="available-balance-withdraw">1059</span></h2>
+                </div>
+                
+                <h3 class="form-title">Request Withdrawal</h3>
+                <form id="withdraw-form">
+                    <label for="withdraw-method">Withdrawal Method</label>
+                    <div class="input-group">
+                        <i class="fas fa-wallet"></i>
+                        <select id="withdraw-method" required>
+                            <option value="" disabled selected>Select a method...</option>
+                            <option value="bkash">Bkash</option>
+                            <option value="nagad">Nagad</option>
+                            <option value="rocket">Rocket</option>
+                            <option value="binance">Binance (BEP20)</option>
+                        </select>
+                    </div>
+
+                    <label for="withdraw-amount">Amount (SHIB)</label>
+                    <div class="input-group">
+                        <i class="fas fa-coins"></i>
+                        <input type="number" id="withdraw-amount" placeholder="Enter amount" required>
+                    </div>
+
+                    <label for="wallet-info">Wallet Info</label>
+                    <div class="input-group">
+                        <i class="fas fa-clipboard-list"></i>
+                        <input type="text" id="wallet-info" placeholder="Enter your wallet address/number" required>
+                    </div>
+                    
+                    <p class="form-hint">Minimum Withdrawal: 20 BDT (approx 15000 SHIB)</p>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Submit Withdrawal <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div id="profile-page" class="page">
+            <div class="profile-header-card">
+                <div class="avatar large" id="user-avatar-profile">TA</div>
+                <h2 id="user-name-profile">Taher Aziz</h2>
+                <p>Username: <span id="user-username-profile">@Azizts</span></p>
+                <p class="balance">Balance: <span class="gradient-text">SHIB <span id="user-balance-profile">1059</span></span></p>
+            </div>
+
+            <div class="profile-stats-grid">
+                <div class="stat-card-profile">
+                    <p>Total Earnings</p>
+                    <h4>SHIB <span id="total-earnings-profile">1059</span></h4>
+                </div>
+                <div class="stat-card-profile">
+                    <p>Ads Watched</p>
+                    <h4><span id="total-ads-profile">38</span></h4>
+                </div>
+                <div class="stat-card-profile">
+                    <p>Total Referrals</p>
+                    <h4><span id="total-referrals-profile">0</span></h4>
+                </div>
+            </div>
+
+            <div class="profile-links">
+                <button class="btn btn-secondary btn-full">
+                    <i class="fas fa-headset"></i> Contact Developer
+                </button>
+                <button class="btn btn-secondary btn-full">
+                    <i class="fas fa-life-ring"></i> Support Channel
+                </button>
+            </div>
+        </div>
+
+        <div id="refer-page" class="page">
+            <div class="card text-center">
+                <img src="https://i.ibb.co/3sH3S1Q/refer-rocket.png" alt="Rocket" class="refer-image">
+                <h2>Referral Program</h2>
+                <p>Share your link and earn rewards for every friend who joins!</p>
+                
+                <label for="referral-link">Your Referral Link</label>
+                <div class="input-group">
+                    <input type="text" id="referral-link" value="https://t.me/YourBot..." readonly>
+                    <button class="copy-btn" id="copy-link-btn"><i class="fas fa-copy"></i></button>
+                </div>
+                
+                <button class="btn btn-telegram btn-full" id="share-telegram-btn">
+                    <i class="fab fa-telegram-plane"></i> Share on Telegram
+                </button>
+
+                <div class="referral-count-card">
+                    <p>Total Referrals</p>
+                    <h3><span id="total-referrals-refer">0</span></h3>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <button class="fab" onclick="showPage('refer-page')" title="Refer & Earn">
+        <i class="fas fa-users"></i>
+    </button>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="home-page">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </button>
+        <button class="nav-item" data-page="earn-page">
+            <i class="fas fa-coins"></i>
+            <span>Earn</span>
+        </button>
+        <button class="nav-item" data-page="withdraw-page">
+            <i class="fas fa-wallet"></i>
+            <span>Withdraw</span>
+        </button>
+        <button class="nav-item" data-page="profile-page">
+            <i class="fas fa-user-circle"></i>
+            <span>Profile</span>
+        </button>
+    </nav>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
