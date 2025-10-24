@@ -1,0 +1,381 @@
+/* রুট ভেরিয়েবল এবং বেসিক রিসেট */
+:root {
+    --primary-color: #0078FF;
+    --primary-light: #4D9EFF;
+    --primary-gradient: linear-gradient(135deg, #0078FF 0%, #00C6FF 100%);
+    --purple-gradient: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+    --telegram-gradient: linear-gradient(135deg, #37AEE2 0%, #1E96C8 100%);
+    --green-color: #28a745;
+    --red-color: #dc3545;
+    --background-color: #F0F2F5; /* টেলিগ্রামের মতো হালকা ধূসর */
+    --card-bg: #FFFFFF;
+    --text-primary: #1C1C1E;
+    --text-secondary: #6E6E73;
+    --font-main: 'Roboto', 'Noto Sans Bengali', sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 70px 0; /* হেডার ও নেভিগেশনের জন্য স্পেস */
+    overscroll-behavior: none; /* iOS/Android এ বাউন্স এফেক্ট বন্ধ করে */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* হাই-কোয়ালিটি টাইপোগ্রাফি */
+h2 { font-size: 24px; font-weight: 700; }
+h3 { font-size: 20px; font-weight: 500; margin-bottom: 15px; }
+p  { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+/* অ্যাপ হেডার */
+.app-header {
+    background: var(--card-bg);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.user-info { display: flex; align-items: center; }
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 12px;
+}
+.user-details { display: flex; flex-direction: column; }
+.user-name { font-weight: 500; font-size: 16px; color: var(--text-primary); }
+.user-balance { font-size: 13px; color: var(--text-secondary); }
+.page-title {
+    font-size: 18px;
+    font-weight: 500;
+    display: none; /* ডিফল্টভাবে হাইড */
+    color: var(--text-primary);
+}
+
+/* পেজ ম্যানেজমেন্ট */
+.app-content { padding: 15px; }
+.page { display: none; }
+.page.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* কার্ড স্টাইল */
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* বাটন স্টাইল */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* আইকন ও টেক্সটের মধ্যে গ্যাপ */
+}
+.btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 120, 255, 0.3);
+}
+.btn-secondary {
+    background-color: #F0F2F5;
+    color: var(--text-primary);
+}
+.btn-success { background-color: var(--green-color); color: white; }
+.btn-telegram { background: var(--telegram-gradient); color: white; }
+.btn-light { background-color: rgba(255, 255, 255, 0.9); color: var(--primary-color); }
+.btn-full { width: 100%; box-sizing: border-box; }
+.btn-small { padding: 8px 12px; font-size: 14px; border-radius: 8px; }
+
+/* গ্র্যাডিয়েন্ট টেক্সট */
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: 700 !important;
+}
+
+/* হোম পেজ: ওয়েলকাম কার্ড */
+.welcome-card {
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.gradient-purple { background: var(--purple-gradient); }
+.welcome-card h3 { color: white; margin: 0 0 5px; }
+.welcome-card p { color: rgba(255, 255, 255, 0.8); margin: 0 0 15px; }
+.welcome-image {
+    width: 100px;
+    position: absolute;
+    right: 15px;
+    bottom: -10px;
+    opacity: 0.9;
+}
+
+/* হোম পেজ: স্ট্যাটাস গ্রিড */
+.section-title { margin: 25px 0 15px 5px; }
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+.stat-card i {
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.icon-earn { color: #FFB800; background: #FFF8E6; }
+.icon-ads { color: #00C6FF; background: #E6F9FF; }
+.stat-card p { margin: 0 0 5px; }
+.stat-card h4 { margin: 0; font-size: 18px; color: var(--text-primary); }
+
+/* আর্ন পেজ */
+.task-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 15px 0;
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--primary-gradient);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+.daily-task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--background-color);
+}
+.daily-task-item:last-child { border-bottom: none; }
+.task-info p { font-weight: 500; margin: 0; color: var(--text-primary); }
+.task-info span { font-size: 13px; color: var(--green-color); font-weight: 500; }
+.task-actions { display: flex; gap: 8px; }
+
+/* উইথড্র পেজ */
+.balance-display { text-align: center; margin-bottom: 20px; }
+.balance-display p { margin-bottom: 0; }
+.balance-display h2 { font-size: 36px; margin: 0; }
+.form-title {
+    text-align: center;
+    border-top: 1px solid var(--background-color);
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+.form-hint { font-size: 13px; text-align: center; margin-top: 15px; }
+label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #F7F7F7;
+    border: 1px solid #EAEAEA;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+.input-group i { color: var(--text-secondary); margin-right: 10px; }
+.input-group input, .input-group select {
+    border: none;
+    background: transparent;
+    padding: 14px 0;
+    font-size: 16px;
+    font-family: var(--font-main);
+    flex-grow: 1;
+    color: var(--text-primary);
+}
+.input-group input:focus, .input-group select:focus {
+    outline: none;
+}
+/* ইনপুট প্লেসহোল্ডার */
+::placeholder { color: #AAAAAA; }
+
+/* প্রোফাইল পেজ */
+.profile-header-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+}
+.avatar.large {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+    margin: 0 auto 15px auto;
+}
+.profile-header-card h2 { margin: 0 0 5px; }
+.profile-header-card p { margin: 4px 0; }
+.profile-header-card .balance { font-size: 18px; font-weight: 500; }
+
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.stat-card-profile {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.stat-card-profile p { font-size: 12px; margin: 0 0 5px; }
+.stat-card-profile h4 { font-size: 16px; margin: 0; color: var(--primary-color); }
+.profile-links { display: flex; flex-direction: column; gap: 10px; }
+
+/* রেফার পেজ */
+.text-center { text-align: center; }
+.refer-image { width: 120px; margin-bottom: 10px; }
+.referral-count-card {
+    background: var(--background-color);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+.referral-count-card p { margin: 0; }
+.referral-count-card h3 { margin: 5px 0 0; font-size: 28px; color: var(--primary-color); }
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 18px;
+    padding: 10px;
+}
+#referral-link { padding: 14px 0 14px 15px; } /* ইনপুট গ্রুপ থেকে আইকনের গ্যাপ সরাতে */
+
+/* ফ্লোটিং অ্যাকশন বাটন (FAB) */
+.fab {
+    position: fixed;
+    bottom: 85px; /* নেভিগেশন বারের উপরে */
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background: var(--purple-gradient);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.2s ease-in-out;
+}
+.fab:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* নিচের নেভিগেশন বার */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 65px;
+    background: var(--card-bg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-main);
+    cursor: pointer;
+    flex-grow: 1;
+    height: 100%;
+    transition: color 0.2s ease;
+}
+.nav-item i {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+.nav-item span {
+    font-size: 12px;
+    font-weight: 500;
+}
+.nav-item.active {
+    color: var(--primary-color);
+  }
